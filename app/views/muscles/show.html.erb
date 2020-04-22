@@ -1,0 +1,4 @@
+<h1>詳細投稿</h1>
+<%=@muscle.title%>
+<%=@muscle.body%>
+ <%= attachment_image_tag @muscle,:image,:fill, 400,300, fallback: "no_image.jpg" %>

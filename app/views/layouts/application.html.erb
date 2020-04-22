@@ -8,6 +8,21 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+<h2>筋肉マッスル</h2>
+<nav>
+  <ul>
+     <li>ようこそ<%= current_user.name %>さん<li>
+    <li><%=link_to"投稿", muscles_path%>
+    <li><%= link_to "ホームページ" ,root_path %></li>
+
+    <li><%= link_to "サインアップ" ,new_user_registration_path %></li>
+
+    <li><%= link_to "ログイン" ,new_user_session_path %></li>
+    <li><%= link_to "筋肉ユーザー一覧" ,users_path %></li>
+  </ul>
+</nav>
+
+
 
   <body>
     <%= yield %>

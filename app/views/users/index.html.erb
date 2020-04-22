@@ -1,0 +1,8 @@
+<h1>筋肉ユーザー</h1>
+
+<% @users.each do |user|%>
+<%= attachment_image_tag user, :user_image,:fill, 200,200, fallback: "no_image.jpg", size:'200x200' %>
+<%= user.name%>
+ <%end%>
+<%= link_to"MYSELF",user_path(@user)%>
+ <%= link_to "変更", edit_user_path(@user) %>

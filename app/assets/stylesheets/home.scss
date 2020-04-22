@@ -1,0 +1,15 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.font_test {
+    font-size: 20px;    /* 文字サイズ指定 */
+    color: #2196F3;     /* 文字色指定 */
+}
+
+.bg_test-text {
+    background-image: url(hoge.png);    /* 背景画像指定 */
+  height: 800px;
+  
+  background-size: cover;
+}

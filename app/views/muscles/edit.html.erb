@@ -1,0 +1,7 @@
+<h3>筋肉ユーザー投稿</h3>
+<%= form_for(@muscle)do |f| %>
+<%= f.text_field :title %>
+<%= f.text_area :body %>
+<%= f.attachment_field :image %>
+<%= f.submit '投稿保存' %>
+<% end %>
