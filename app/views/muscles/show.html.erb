@@ -2,3 +2,4 @@
 <%=@muscle.title%>
 <%=@muscle.body%>
  <%= attachment_image_tag @muscle,:image,:fill, 400,300, fallback: "no_image.jpg" %>
+   <%=link_to"消す",muscle_path(@muscle.id), method: :delete, data: { confirm: '本当に消しますか？' } %>

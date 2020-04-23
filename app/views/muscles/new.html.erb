@@ -1,7 +1,9 @@
-<h3>筋肉ユーザー編集</h3>
+<h3>筋肉ユーザー新規登録</h3>
 <%= form_for(@muscle)do |f| %>
 <%= f.text_field :title %>
 <%= f.text_area :body %>
 <%= f.attachment_field :image %>
 <%= f.submit '投稿保存' %>
 <% end %>
+
+<%#=link_to'筋肉ユーザー投稿' ,edit_muscle_path()%>
