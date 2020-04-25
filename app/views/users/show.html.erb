@@ -3,3 +3,9 @@
 <%= current_user.name %>
 
 
+<h1>筋肉ユーザー投稿一覧</h1>
+<% @muscles.each do |muscle| %>
+<%= attachment_image_tag muscle,:image,:fill, 300,300 %>
+<%= muscle.title%>
+<%= muscle.body%>
+<% end %>

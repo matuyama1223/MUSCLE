@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
   def index
+    #@muscles = Muscles.all
   	@users = User.all
   	@user = current_user
   end
 
   def show
     @user =User.find(params[:id])
-
+    #         検索エンジンカラム名↓　検索ワード↓　　
+    @muscles = Muscle.where(user_id: @user.id)
   end
 
   def edit

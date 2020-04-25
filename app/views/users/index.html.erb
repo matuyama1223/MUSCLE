@@ -7,12 +7,14 @@
 		<tr>
 			<th></th>
 			<th></th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @users.each do |user|%>
 		<tr>
 			<td><%= attachment_image_tag user, :user_image,:fill, 200,200, fallback: "no_image.jpg", size:'200x200' %></td>
+			<td><%=link_to "詳細",user_path(user.id)%></td>
 			<td><%= user.name%></td>
 			<td></td>
 		</tr>

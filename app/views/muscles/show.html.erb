@@ -1,5 +1,11 @@
 <h1>詳細投稿</h1>
+<%=link_to user_path(@muscle.user.id)do %>
+<%= attachment_image_tag @muscle,:image,:fill, 400,300, fallback: "no_image.jpg" %>
+<% end %>
 <%=@muscle.title%>
 <%=@muscle.body%>
- <%= attachment_image_tag @muscle,:image,:fill, 400,300, fallback: "no_image.jpg" %>
-   <%=link_to"消す",muscle_path(@muscle.id), method: :delete, data: { confirm: '本当に消しますか？' } %>
+<% if current_user.id == @muscle.user_id %>
+<%=link_to"消す",muscle_path(@muscle.id), method: :delete, data: { confirm: '本当に消しますか？' } %>
+<%=link_to'編集' ,edit_muscle_path(@muscle.id)%>
+<% end %>
+<%=@muscle.user.name%>

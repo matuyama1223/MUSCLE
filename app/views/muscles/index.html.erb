@@ -1,15 +1,26 @@
-<% # ヒント的な？ %>
+ <div class="container">
+     <div class="row">
+ <div class="col-xs-5">
 <%=link_to'筋肉ユーザー新規投稿' ,new_muscle_path()%>
-
-
-<%= attachment_image_tag @user, :user_image,:fill, 200,200, fallback: "no_image.jpg" %>
-<h3>MUSCLEユーザー投稿一覧</h3>
-<% @muscles.each do |muscle| %>
-<%=muscle.title%>
-<%=muscle.body%>
-<%= attachment_image_tag muscle,:image,:fill, 100,100 %>
-<%end%>
-
-
 <%=current_user.name%>
+<div class="rounded-circle">
+<%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg"%>
+</div>
+</div>
+<div class="col-xs-7">
+<h3>投稿一覧</h3>
+<% @muscles.each do |muscle| %>
+
+<%=link_to user_path(muscle.user) do %>
+<%= attachment_image_tag muscle,:image,:fill, 600,500 %>
+<% end %>
+ <%= attachment_image_tag muscle.user, :user_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
+<%=link_to muscle.body,muscle_path(muscle)%>
+ <%= muscle.title%>
+
+<%= muscle.user.name %>
+<% end %>
+</div>
+</div>
+</div>
 
