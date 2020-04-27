@@ -15,6 +15,7 @@ class MusclesController < ApplicationController
 
 	def show
 		@muscle = Muscle.find(params[:id])
+		@muscle_comments = MuscleComment.new
 	end
 
 	def create
@@ -38,7 +39,7 @@ class MusclesController < ApplicationController
 
 	private
 	def  muscle_params
-		params.require(:muscle).permit(:title,:body,:image)
+		params.require(:muscle).permit(:title,:body,:image,:muscle_genre)
 	end
 end
 

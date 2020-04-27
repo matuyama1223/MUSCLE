@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :mauscles,dependent: :destroy
   attachment :user_image, destroy: false
   has_many :favories,dependent: :destroy
+  has_many :muscle_comments,dependent: :destroy
 end

@@ -3,6 +3,7 @@
 <%= f.text_field :title %>
 <%= f.text_area :body %>
 <%= f.attachment_field :image %>
+<%= f.select :muscle_genre,([['腹筋', '腹筋'], ['大胸筋', '大胸筋'], ['プロテイン', 'プロテイン']]), include_blank: "選択して下さい"%>
 <%= f.submit '投稿保存' %>
 <% end %>
 

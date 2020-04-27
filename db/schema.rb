@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_26_091004) do
+ActiveRecord::Schema.define(version: 2020_04_27_073242) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_04_26_091004) do
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "muscle_genre"
   end
 
   create_table "users", force: :cascade do |t|

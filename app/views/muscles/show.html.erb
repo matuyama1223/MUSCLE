@@ -7,5 +7,20 @@
 <% if current_user.id == @muscle.user_id %>
 <%=link_to"消す",muscle_path(@muscle.id), method: :delete, data: { confirm: '本当に消しますか？' } %>
 <%=link_to'編集' ,edit_muscle_path(@muscle.id)%>
-<% end %>
+
 <%=@muscle.user.name%>
+
+<% @muscle.muscle_comments.each do |muscle_comment| %>
+<%= muscle_comment.user.name%>
+<%= muscle_comment.comment%>
+<%= muscle_comment.created_at.strftime('%Y/%m/%d') %>
+<%= muscle_comment.comment %>
+<%#=link_to '消す',muscle_comment_path(muscle_comment),method: :delete %>
+<%end%>
+
+<%= form_for [@muscle, @muscle_comments] do |f| %>
+<%= f.text_field :comment, rows:'5' %>
+<%=f.submit%>
+
+<% end %>
+<% end %>

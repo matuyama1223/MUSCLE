@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 	resources :users ,only: [:index,:show,:edit,:update]
 
 	resources :muscles do
+		resource :muscle_comments,only:[:create]
 		resources :favorites,only:[:create,:destroy]
+
 	end
 end
