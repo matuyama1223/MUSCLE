@@ -1,9 +1,29 @@
-<h3>筋肉ユーザー新規登録</h3>
-<%= form_for(@muscle)do |f| %>
-<%= f.text_field :title %>
-<%= f.text_area :body %>
-<%= f.attachment_field :image %>
-<%= f.select :muscle_genre,([['腹筋', '腹筋'], ['大胸筋', '大胸筋'], ['プロテイン', 'プロテイン']]), include_blank: "選択して下さい"%>
-<%= f.submit '投稿保存' %>
-<% end %>
+ <div class="container">
+ 	<div class="row">
 
+ 		<h3>筋肉ユーザー新規登録</h3>
+ 		<%= form_for(@muscle)do |f| %>
+
+ 		<table>
+ 			<tr>
+ 				<th>タイトル</th>
+ 				<th><%= f.text_field :title %></th>
+ 			</tr>
+ 			<tr>
+ 				<th>内容</th>
+ 				<th><%= f.text_area :body %></th>
+ 			</tr>
+ 			<tr>
+ 				<th>画像</th>
+ 				<th><%= f.attachment_field :image %></th>
+ 			</tr>
+ 			<tr>
+ 				<th><%= f.select :muscle_genre,([['腹筋', '腹筋'], ['大胸筋', '大胸筋'], ['上腕二頭筋', '上腕二頭筋'], ['プロテイン', 'プロテイン']]), include_blank: "選択して下さい"%></th>
+ 			</tr>
+ 			<tr>
+ 				<th><%= f.submit '投稿保存' %></th>
+ 			</tr>
+ 		</table>
+ 		<% end %>
+ 	</div>
+ </div>

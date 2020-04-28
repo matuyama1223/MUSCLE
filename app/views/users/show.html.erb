@@ -1,6 +1,6 @@
 <h1>筋肉ユーザーMYSELF</h1>
 <%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg" %>
-<%= current_user.name %>
+<%= @user.name %>
 
 
 <h1>筋肉ユーザー投稿一覧</h1>

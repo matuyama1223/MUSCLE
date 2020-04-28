@@ -7,7 +7,7 @@ class MuscleCommentsController < ApplicationController
 		redirect_to muscle_path(muscle)
 
 	end
-	def dastroy
+	def destroy
 		muscle_comment = MuscleComment.find(params[:id])
 		muscle_comment.destroy
 		redirect_to request.referer

@@ -1,27 +1,42 @@
  <div class="container">
      <div class="row">
- <div class="col-xs-2">
+ <!-- <div class="col-xs-2"> -->
 <%=link_to'筋肉ユーザー新規投稿' ,new_muscle_path()%>
 <%=current_user.name%>
 <div class="rounded-circle">
 <%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg"%>
 </div>
-</div>
-<div class="col-xs-10">
+ <div class="col-xs-8">
 <h3>投稿一覧</h3>
+
 <% @muscles.each do |muscle| %>
+<h2><%=link_to muscle.body,muscle_path(muscle)%></h2>
 
 	<%=link_to user_path(muscle.user) do %>
-		<%= attachment_image_tag muscle,:image,:fill, 600,500 %>
+		<%= attachment_image_tag muscle,:image,:fill, 700,500 %>
 	<% end %>
-	<%= attachment_image_tag muscle.user, :user_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
-	<%=link_to muscle.body,muscle_path(muscle)%>
-	<%= muscle.muscle_genre%>
+<table>
+<tbody>
+	<tr>
+	<td><%= attachment_image_tag muscle.user, :user_image, :fill, 80, 80, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %></td>
+	</tr>
+	<tr>
+		<td><%=link_to muscle.body,muscle_path(muscle)%></td>
+	</tr>
+	<tr>
+		<td><%= muscle.muscle_genre%></td>
+	</tr>
+
+</tbody>
+</table>
+
+
+
 
 	<!--favorited_by?メソッドで判定しています-->
 	<% if muscle.favorited_by?(current_user) %>
-
-		<%= link_to muscle_favorites_path(muscle), method: :delete do %>
+	<% @favorite =current_user.favorites.where(muscle_id:muscle.id).first %>
+		<%= link_to muscle_favorite_path(muscle.id,@favorite.id), method: :delete do %>
 			<%= muscle.favorites.count%>いいね
 			<!-- いいねしてたら上 -->
 		<% end %>
@@ -37,7 +52,7 @@
 <%end%>
 
 
-
+</div>
 </div>
 </div>
 </div>

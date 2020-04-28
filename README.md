@@ -19,7 +19,7 @@
 ジム終わりやどこの部位を鍛えたのかを簡単に投稿する
 
 ## 設計書
-
+https://docs.google.com/spreadsheets/d/1GaUuJkFGaCxHt3yqvJd36kBfN3HIDGh-Ju0kc09JRdY/edit#gid=936539047
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1P1xnMQMU219ukaUhkeug9ZdsBBvEuaRHI2_7Oz_bdzg/edit?usp=sharing
 
