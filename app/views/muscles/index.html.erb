@@ -1,61 +1,88 @@
  <div class="container">
-     <div class="row">
- <!-- <div class="col-xs-2"> -->
-<%=link_to'筋肉ユーザー新規投稿' ,new_muscle_path()%>
-<%=current_user.name%>
-<div class="rounded-circle">
-<%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg"%>
-</div>
- <div class="col-xs-8">
-<h3>投稿一覧</h3>
+ 	<div class="row">
+ 		<!-- <div class="col-xs-2"> -->
+ 			<%=link_to'筋肉ユーザー新規投稿' ,new_muscle_path()%>
+ 			<%=current_user.name%>
+ 			<div class="rounded-circle">
+ 				<%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg"%>
+ 			</div>
 
-<% @muscles.each do |muscle| %>
-<h2><%=link_to muscle.body,muscle_path(muscle)%></h2>
-
-	<%=link_to user_path(muscle.user) do %>
-		<%= attachment_image_tag muscle,:image,:fill, 700,500 %>
-	<% end %>
-<table>
-<tbody>
-	<tr>
-	<td><%= attachment_image_tag muscle.user, :user_image, :fill, 80, 80, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %></td>
-	</tr>
-	<tr>
-		<td><%=link_to muscle.body,muscle_path(muscle)%></td>
-	</tr>
-	<tr>
-		<td><%= muscle.muscle_genre%></td>
-	</tr>
-
-</tbody>
-</table>
+			<div class="col-xs-3">
+			<!-- muscleモデルからの定義(Enum)(GENRESの定義) -->
+			<% Muscle::GENRES.each do |genre|%>
+			<%= link_to genre, muscles_path(genre: genre) %>
+			<%end%>
+			</div>
 
 
 
+ 			<div class="col-xs-9">
+ 				<h3>投稿一覧</h3>
 
-	<!--favorited_by?メソッドで判定しています-->
-	<% if muscle.favorited_by?(current_user) %>
-	<% @favorite =current_user.favorites.where(muscle_id:muscle.id).first %>
-		<%= link_to muscle_favorite_path(muscle.id,@favorite.id), method: :delete do %>
-			<%= muscle.favorites.count%>いいね
-			<!-- いいねしてたら上 -->
-		<% end %>
-	<% else %>
-		<%= link_to muscle_favorites_path(muscle), method: :post do %>
-			<%= muscle.favorites.count %>いいね
-			<!-- いいねしてなかったら上 -->
-		<% end %>
-	<% end %>
+ 				<% @muscles.each do |muscle| %>
+ 				<h2><%=link_to muscle.body,muscle_path(muscle)%></h2>
+ 				<%=link_to muscle_path(muscle) do %>
+ 				<%= attachment_image_tag muscle,:image,:fill, 700,500 %>
+ 				<%end%>
+ 				<table>
+ 					<tbody>
+ 						<tr>	
+ 							<td><%=link_to user_path(muscle.user) do %>
+ 								<%= attachment_image_tag muscle.user, :user_image, :fill, 80, 80, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
+ 							<% end %>
+ 							</td>
 
-	<%= muscle.title%>
-	<%= muscle.user.name %>
-<%end%>
+ 						</tr>
+ 						<tr>
+ 							<td><%=link_to muscle.body,muscle_path(muscle)%></td>
+ 						</tr>
+ 						<tr>
+ 							<td><%= muscle.muscle_genre%></td>
+ 						</tr>
+ 									
+ 						<td><%=link_to muscle_path(muscle) do %>
+ 							<span class="glyphicon glyphicon-edit" ></span></td>
+ 						<td>コメント数<%= muscle.muscle_comments.count %>
+ 							<%end%>
+ 							<td>
+ 							
+ 						</tbody>
+ 					</table>
 
 
-</div>
-</div>
-</div>
-</div>
+
+
+ 					<!--favorited_by?メソッドで判定しています-->
+ 					<% if muscle.favorited_by?(current_user) %>
+ 					<% @favorite =current_user.favorites.where(muscle_id:muscle.id).first %>
+ 					<%= link_to muscle_favorite_path(muscle.id,@favorite.id), method: :delete do %>
+ 					<%= muscle.favorites.count%>いいね
+ 					<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+
+ 					<!-- いいねしてたら上 -->
+
+ 					<% end %>
+ 					<% else %>
+ 					<%= link_to muscle_favorites_path(muscle), method: :post do %>
+ 					<%= muscle.favorites.count %>いいね
+ 					<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+ 					<!-- いいねしてなかったら上 -->
+ 					<% end %>
+ 					<% end %>
+
+ 					<%= muscle.title%>
+ 					<%= muscle.user.name %>
+ 					<%end%>
+ 					</div>
+
+
+
+
+
+ 				
+ 			</div>
+ 		</div>
+ 	</div>
 
 
 

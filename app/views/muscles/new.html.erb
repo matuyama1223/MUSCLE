@@ -18,7 +18,8 @@
  				<th><%= f.attachment_field :image %></th>
  			</tr>
  			<tr>
- 				<th><%= f.select :muscle_genre,([['腹筋', '腹筋'], ['大胸筋', '大胸筋'], ['上腕二頭筋', '上腕二頭筋'], ['プロテイン', 'プロテイン']]), include_blank: "選択して下さい"%></th>
+ 									<!-- muscleモデルからの(GENRES)定義(Enum) -->
+ 				<th><%= f.select :muscle_genre, (Muscle::GENRES), include_blank: "選択して下さい"%></th>
  			</tr>
  			<tr>
  				<th><%= f.submit '投稿保存' %></th>

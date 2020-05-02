@@ -1,8 +1,14 @@
 class MusclesController < ApplicationController
 	def index
-		@muscles = Muscle.all
+					# じゃなかったら＝present?
+		@muscles = if params[:genre].present?
+			         Muscle.where(muscle_genre: params[:genre])
+			         # 違ったらした
+			       else
+			      	 Muscle.all
+			       end
 		@user =  current_user
-		@users = User.all
+		@users = User.all			
 	end
 
 	def new
