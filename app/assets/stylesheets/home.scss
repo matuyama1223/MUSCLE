@@ -2,15 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.font_test {
-    font-size: 20px;    /* 文字サイズ指定 */
-    color: #2196F3;     /* 文字色指定 */
+.video-top{
+	position: relative;
+}
+.video-top-back{
+	position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 100%;
 }
 
-.bg_test-text {
-    background-image: url(hoge.png);    /* 背景画像指定 */
-    width:100%;
-  height: 650px;
-  background-size: cover;
-  background-position: center;
-}

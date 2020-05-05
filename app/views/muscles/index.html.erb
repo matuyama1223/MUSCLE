@@ -1,22 +1,19 @@
- <div class="container">
- 	<div class="row">
- 		<!-- <div class="col-xs-2"> -->
- 			<%=link_to'筋肉ユーザー新規投稿' ,new_muscle_path()%>
- 			<%=current_user.name%>
- 			<div class="rounded-circle">
- 				<%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg"%>
- 			</div>
+<div class="container">
+<div class="row">
+	<div class="col-xs-2">
 
-			<div class="col-xs-3">
+ 			<%=link_to'筋肉ユーザー新規投稿' ,new_muscle_path%>
+ 			<h5><%=current_user.name%></h5>
+ 		<div class="rounded-circle">
+ 	     <%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg"%>
+ 	       <h5><%=link_to"全て", muscles_path%></h5>
+ 		</div>
 			<!-- muscleモデルからの定義(Enum)(GENRESの定義) -->
 			<% Muscle::GENRES.each do |genre|%>
-			<%= link_to genre, muscles_path(genre: genre) %>
+			<h5><%= link_to genre, muscles_path(genre: genre) %></h5>
 			<%end%>
-			</div>
-
-
-
- 			<div class="col-xs-9">
+	</div>
+ 			<div class="col-xs-10">
  				<h3>投稿一覧</h3>
 
  				<% @muscles.each do |muscle| %>
@@ -24,8 +21,12 @@
  				<%=link_to muscle_path(muscle) do %>
  				<%= attachment_image_tag muscle,:image,:fill, 700,500 %>
  				<%end%>
+ 				<%#= attachment_video_tag muscle.user(video: "100x100>") %>
  				<table>
- 					<tbody>
+ 					<tr>
+ 						<td><%#=attachment_video_tag muscle.user, :video, :fill, 80, 80 %></td>
+ 					</tr>
+ 					
  						<tr>	
  							<td><%=link_to user_path(muscle.user) do %>
  								<%= attachment_image_tag muscle.user, :user_image, :fill, 80, 80, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
@@ -45,13 +46,7 @@
  						<td>コメント数<%= muscle.muscle_comments.count %>
  							<%end%>
  							<td>
- 							
- 						</tbody>
  					</table>
-
-
-
-
  					<!--favorited_by?メソッドで判定しています-->
  					<% if muscle.favorited_by?(current_user) %>
  					<% @favorite =current_user.favorites.where(muscle_id:muscle.id).first %>
@@ -72,17 +67,12 @@
 
  					<%= muscle.title%>
  					<%= muscle.user.name %>
- 					<%end%>
- 					</div>
-
-
-
-
-
- 				
+ 					
+ 				<%end%>
  			</div>
  		</div>
- 	</div>
+</div>
+</div>
 
 
 

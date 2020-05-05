@@ -12,12 +12,19 @@
 <body>
 <header>
   <div class="container">
-  <h2>筋肉マッスル</h2>
+    <h2><%=image_tag "no_image.jpg", alt: "Rails icon", id: "pic1", class: "image",width:"100px" %>
+  筋肉マッスル</h2>
     <ul class="nav navbar-nav navbar-right">
      <% if user_signed_in? %>
+        <!-- js/skippr.min.js記載してる -->
+        <img id="randomSho">
+        <!-- ⬆︎画像 -->    
      <li>ようこそ<%= current_user.name %>さん<li>
-      <li><%=link_to"投稿", muscles_path%>
-         <li><%= link_to "ホームページ" ,root_path %></li>
+            <!-- js/skippr.min.js記載してる -->
+      <img id="randomShow"></span>
+      <!-- ⬆︎画像 -->
+      <li><%=link_to"投稿", muscles_path%></li>
+         <li><%= link_to "ホームページ" ,muscles_path %></li>
         <li><%= link_to "筋肉ユーザー一覧" ,users_path %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         <%else%>

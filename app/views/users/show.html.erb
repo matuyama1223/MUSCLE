@@ -1,11 +1,18 @@
+<div class="container">
+  <div class="row">
 <h1>筋肉ユーザーMYSELF</h1>
 <%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg" %>
 <%= @user.name %>
-
-
+<%= @user.email %>
 <h1>筋肉ユーザー投稿一覧</h1>
 <% @muscles.each do |muscle| %>
+<%=link_to  muscle_path(muscle)do%>
 <%= attachment_image_tag muscle,:image,:fill, 300,300 %>
+<%end%>
 <%= muscle.title%>
 <%= muscle.body%>
 <% end %>
+
+
+</div>
+</div>

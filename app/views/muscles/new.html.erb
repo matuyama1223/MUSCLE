@@ -1,30 +1,21 @@
  <div class="container">
  	<div class="row">
+ 		<div class="col-md-4 col-md-offset-4">
 
- 		<h3>筋肉ユーザー新規登録</h3>
- 		<%= form_for(@muscle)do |f| %>
-
- 		<table>
- 			<tr>
- 				<th>タイトル</th>
- 				<th><%= f.text_field :title %></th>
- 			</tr>
- 			<tr>
- 				<th>内容</th>
- 				<th><%= f.text_area :body %></th>
- 			</tr>
- 			<tr>
- 				<th>画像</th>
- 				<th><%= f.attachment_field :image %></th>
- 			</tr>
- 			<tr>
- 									<!-- muscleモデルからの(GENRES)定義(Enum) -->
- 				<th><%= f.select :muscle_genre, (Muscle::GENRES), include_blank: "選択して下さい"%></th>
- 			</tr>
- 			<tr>
- 				<th><%= f.submit '投稿保存' %></th>
- 			</tr>
- 		</table>
- 		<% end %>
+ 			<h1>筋肉ユーザー新規登録</h1>
+ 			<%= form_for(@muscle)do |f| %>
+ 			<h1>タイトル</h1>
+ 			<h3><%= f.text_field :title %></h3>
+ 			<h1>内容</h1>
+ 			<h3><%= f.text_area :body %></h3>
+ 			<h1>画像</h1>
+ 			 <h3><%= f.attachment_field :image %></h3>
+ 			<h1>ジャンル</h1>
+ 			<!-- muscleモデルからの(GENRES)定義(Enum) -->
+ 			<h3><%= f.select :muscle_genre, (Muscle::GENRES), include_blank: "選択して下さい"%></h3>
+ 			
+ 			<%= f.submit '投稿保存',class:"label-warning" %>
+ 			<% end %>
+ 		</div>
  	</div>
  </div>

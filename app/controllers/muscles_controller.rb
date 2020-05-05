@@ -8,7 +8,8 @@ class MusclesController < ApplicationController
 			      	 Muscle.all
 			       end
 		@user =  current_user
-		@users = User.all			
+		@users = User.all
+				
 	end
 
 	def new
@@ -45,7 +46,7 @@ class MusclesController < ApplicationController
 
 	private
 	def  muscle_params
-		params.require(:muscle).permit(:title,:body,:image,:muscle_genre)
+		params.require(:muscle).permit(:title,:body,:image,:muscle_genre,:video)
 	end
 end
 

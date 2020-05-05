@@ -1,17 +1,24 @@
- <div class="container">
- 	<div class="row">
- 			<div class="font_test">
-<!-- ここから -->
- 				<div class="bg_test">
-   			 <div class="bg_test-text">
-<!-- ここまで画像の背景です -->
- 				<h1>筋肉を自慢して最高の筋肉を投稿し競い合いましょう</h1>
+<div class="video-top">
+	<%= video_tag("/assets/videos/video.mp4", autoplay: true, loop: true, muted: true, style: "width:100%;") %>
+	<div class="video-top-back">
 
- 				<p>筋肉がまだ無い人でも筋肉を好きになって欲しいです</p>
+		<h1>筋肉を自慢して最高の筋肉を投稿し競い合いましょう</h1>
+		<p>筋肉がまだ無い人でも筋肉を好きになって欲しいです</p>
+		<div class="row">
+			<h3><%=link_to "Sign up", new_user_registration_path, class: "btn btn-success col-xs-10 col-xs-offset-1" %></h3>
+		</div>
+		<div class="row">
+			<h3><%=link_to "Log in", new_user_session_path, class: "btn btn-info col-xs-10 col-xs-offset-1" %></h3>
+		</div>
+	</div>
+	<!-- ===================== -->
+	<!-- rails公文の使い方 -->
+<!-- hensumei = {
+	id: 1,
+	name: "name",
+	:id => 1,
+	:name => "name",
+} -->
 
- 			    </div>
-				</div>
- 			</div>
- 		</div>
- 	</div>
- </div>
+<%#= video_tag("/assets/videos/video.mp4", :autoplay => true, :loop => true, :muted => true, style: "width:100%;") %>
+<!-- ==================== -->

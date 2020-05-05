@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    #@muscles = Muscles.all
+    #@muscle = Muscle.find(params[:id])
   	@users = User.all
   	@user = current_user
   end
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to
+    redirect_to new_user_registration_path
   end
 
 

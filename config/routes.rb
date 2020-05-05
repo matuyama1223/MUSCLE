@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 	root 'home#top'
 	get'home/about' =>"home#about"
 
-	resources :users ,only: [:index,:show,:edit,:update]
+	resources :users ,only: [:index,:show,:edit,:update,:destroy]
 
 	resources :muscles do
 		resources :muscle_comments,only:[:create ,:destroy]
