@@ -4,6 +4,7 @@
 <%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg" %>
 <%= @user.name %>
 <%= @user.email %>
+
 <h1>筋肉ユーザー投稿一覧</h1>
 <% @muscles.each do |muscle| %>
 <%=link_to  muscle_path(muscle)do%>
