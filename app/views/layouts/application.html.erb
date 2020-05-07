@@ -18,7 +18,7 @@
      <% if user_signed_in? %>
         <!-- js/skippr.min.js記載してる -->
         <img id="randomSho">
-        <!-- ⬆︎画像 -->    
+        <!-- ⬆︎画像 -->
      <li>ようこそ<%= current_user.name %>さん<li>
             <!-- js/skippr.min.js記載してる -->
       <img id="randomShow"></span>
@@ -26,7 +26,10 @@
       <li><%=link_to"投稿", muscles_path%></li>
          <li><%= link_to "ホームページ" ,muscles_path %></li>
         <li><%= link_to "筋肉ユーザー一覧" ,users_path %></li>
+        <li><%= link_to 'フォロワー',users_follower_path%><li>
+        <li><%=link_to"フォロー",users_follows_path%></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+
         <%else%>
         <li><%= link_to "ホームページ" ,root_path %></li>
         <li><%= link_to "ログイン" ,new_user_session_path %></li>

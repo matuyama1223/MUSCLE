@@ -1,23 +1,32 @@
 
-<%= link_to"MYSELF",user_path(@user)%>
-<%= link_to "変更", edit_user_path(@user) %>
+<%= link_to"MYSELF投稿内容",user_path(@user) ,class:"btn btn-success"%>
+<%= link_to "CURRENT MUSCLE変更", edit_user_path(@user),class:"btn btn-warning" %>
 <h1>MUSCLEユーザー</h1>
 <table class="table">
 	<thead>
 		<tr>
+			<th>画像</th>
 			<th></th>
-			<th></th>
-			<th></th>
+			<th>名前</th>
+			<th>フォロワー　フォロー<span class="glyphicon glyphicon-user"></span></th>
+			<th>投稿数<span class="glyphicon glyphicon-comment"></span></th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @users.each do |user|%>
 		<tr>
-			<td><%= attachment_image_tag user, :user_image,:fill, 200,200, fallback: "no_image.jpg", size:'200x200' %></td>
+			<td><%=link_to user_path(user.id)do%>
+			<%= attachment_image_tag user, :user_image,:fill, 200,200, fallback: "no_image.jpg", size:'200x200' %>
+				<%end%>
+				</td>
+			<td><p>フォロー<%=link_to user.relationships.count,users_follows_path %></p></td>
+			<td><p>フォロワー<%=link_to user.reverse_of_relationships.count ,users_follower_path%></p></td>
 			<td><%=link_to "詳細",user_path(user.id)%></td>
 			<td><%= user.name%></td>
 			<td><%= render 'relationships/follow_button',user: user %></td>
-			<td><%#=@muscle.count%></td>
+			<td><%=link_to user_path(user.id)do%>
+			投稿回数<%=user.muscles.count %><span class="glyphicon glyphicon-comment"></span>
+			<%end%></td>
 		</tr>
 		<%end%>
 	</tbody>

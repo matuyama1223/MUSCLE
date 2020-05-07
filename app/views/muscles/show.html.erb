@@ -2,30 +2,44 @@
 <div class="container">
 <div class="row">
 	<h1>詳細投稿</h1>
+	<h3><%=@muscle.title%></h3>
 	<%=link_to user_path(@muscle.user.id)do %>
 	<%= attachment_image_tag @muscle,:image,:fill, 600,500, fallback: "no_image.jpg" %>
 	<% end %>
-	<%=@muscle.title%>
 	<%=@muscle.body%>
 	<% if current_user.id == @muscle.user_id %>
 	<%=link_to"消す",muscle_path(@muscle.id), method: :delete, data: { confirm: '本当に消しますか？' },class:"btn btn-danger" %>
 	<%=link_to'編集' ,edit_muscle_path(@muscle.id),class:"btn btn-primary"%>
 	<% end %>
-	<%=@muscle.user.name%>
-
 	<%= form_for [@muscle, @muscle_comments] do |f| %>
+	<%= attachment_image_tag @muscle.user, :user_image, :fill, 80, 80, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
+	<h3><%=@muscle.user.name%></h3>
+	<%=@muscle.created_at.strftime('%Y/%m/%d') %>
 	<%= f.text_field :comment, rows:'5' , class: "form-control",placeholder: "コメントをここに"%>
-	<%=f.submit%>
+	<%=f.submit "気持ちいいコメント 保存",class: "btn btn-lg btn-base-1 pull-right"%>
 	<% end %>
 
-	<% @muscle.muscle_comments.each do |muscle_comment| %>
-	<%= muscle_comment.user.name%>
-	<%= muscle_comment.created_at.strftime('%Y/%m/%d') %>
-	<%= muscle_comment.comment %>
-	<%=link_to '消す',muscle_muscle_comment_path(@muscle.id,muscle_comment.id),method: :delete %>
-	<%= attachment_image_tag muscle_comment.user, :user_image, :fill, 80, 80, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
-	<%end%>
-</div>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @muscle.muscle_comments.each do |muscle_comment| %>
+			<tr>
+				<td><%= attachment_image_tag muscle_comment.user, :user_image, :fill, 80, 80, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %></td>
+				<td><%= muscle_comment.user.name%></td>
+				<td><%= muscle_comment.created_at.strftime('%Y/%m/%d') %></td>
+				<td><h3><%= muscle_comment.comment %></h3></td>
+				<% if current_user.id == muscle_comment.user_id %>
+				<td><%=link_to '消す',muscle_muscle_comment_path(@muscle.id,muscle_comment.id),method: :delete ,class:"btn btn-danger" %><%end%></td>
+
+				<td></td>
+			</tr>
+		</tbody>
+		<% end %>
+	</table>
 </div>
 
 

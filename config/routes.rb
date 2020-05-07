@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 	devise_for :users
 	root 'home#top'
 	get'home/about' =>"home#about"
+	get'users/follower'=>"users#follower"
+	get'users/follows'=>"users#follows"
 
 	resources :users ,only: [:index,:show,:edit,:update,:destroy]
 

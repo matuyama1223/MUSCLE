@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+
+<h1>フォロワー</h1>
+<% @users.each do |user| %>
+<%=link_to user_path(user.id)do%>
+<%=attachment_image_tag user, :user_image,:fill, 200,200%>
+<%end%>
+<%= user.name%>
+<p>フォロー<%= link_to user.relationships.count, users_follows_path %></p>
+<p>フォロワー<%= user.reverse_of_relationships.count%></p>
+<p>投稿回数<%=user.muscles.count%></p>
+<%= render 'relationships/follow_button',user: user %>
+<% end %>
+</div>
+</div>
+

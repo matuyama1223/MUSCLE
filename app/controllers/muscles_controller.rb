@@ -9,7 +9,6 @@ class MusclesController < ApplicationController
 			       end
 		@user =  current_user
 		@users = User.all
-				
 	end
 
 	def new
@@ -23,6 +22,7 @@ class MusclesController < ApplicationController
 	def show
 		@muscle = Muscle.find(params[:id])
 		@muscle_comments = MuscleComment.new
+		@user = current_user
 	end
 
 	def create
