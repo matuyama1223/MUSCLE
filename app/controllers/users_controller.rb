@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     #@muscle = Muscle.find(params[:id])
-    @users = User.all
+    @users = User.page(params[:page]).reverse_order
     @user = current_user
   end
 
@@ -17,8 +17,12 @@ class UsersController < ApplicationController
 
   def update
    @user = User.find(params[:id])
-   @user.update(user_params)
-   redirect_to user_path(@user)
+  if @user.update(user_params)
+      # flash[:notice]=
+      redirect_to user_path(@user)
+  else
+    render'edit'
+  end
  end
 
  def destroy
@@ -28,12 +32,10 @@ class UsersController < ApplicationController
 end
 
 def follows
-  user = User.find(params[:id])
   @users = current_user.followings
 end
 
 def follower
-  user = User.find(params[:id])
   @users = current_user.followers
 end
 

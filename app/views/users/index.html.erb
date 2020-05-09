@@ -1,4 +1,3 @@
-
 <%= link_to"MYSELF投稿内容",user_path(@user) ,class:"btn btn-success"%>
 <%= link_to "CURRENT MUSCLE変更", edit_user_path(@user),class:"btn btn-warning" %>
 <h1>MUSCLEユーザー</h1>
@@ -6,9 +5,11 @@
 	<thead>
 		<tr>
 			<th>画像</th>
-			<th></th>
+			<th>フォロー<span class="glyphicon glyphicon-user"></span></th>
+			<th>フォロワー<span class="glyphicon glyphicon-user"></span></th>
+			<th>  </th>
 			<th>名前</th>
-			<th>フォロワー　フォロー<span class="glyphicon glyphicon-user"></span></th>
+			<th></th>
 			<th>投稿数<span class="glyphicon glyphicon-comment"></span></th>
 		</tr>
 	</thead>
@@ -28,7 +29,10 @@
 			投稿回数<%=user.muscles.count %><span class="glyphicon glyphicon-comment"></span>
 			<%end%></td>
 		</tr>
+
 		<%end%>
+
 	</tbody>
 </table>
+<%= paginate @users, class: "pagenate" %>
 

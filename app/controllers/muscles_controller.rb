@@ -28,16 +28,23 @@ class MusclesController < ApplicationController
 	def create
 		@muscle = Muscle.new (muscle_params)
 		@muscle.user_id = current_user.id
-		@muscle.save
-		redirect_to @muscle
+		if @muscle.save
+		  redirect_to @muscle
+		else
+		  render "new"
+		end
 	end
 
 
 	def update
 		@muscle = Muscle.find(params[:id])
-		@muscle.update(muscle_params)
+	  if@muscle.update(muscle_params)
 		redirect_to muscle_path
+	 else
+	 	render'edit'
+	 end
 	end
+
  	def destroy
  		@muscle = Muscle.find(params[:id])
  		@muscle.destroy

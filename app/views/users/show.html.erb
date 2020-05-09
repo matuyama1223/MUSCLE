@@ -1,18 +1,61 @@
 <div class="container">
   <div class="row">
+  <div class="col-md-4 col-md-offset-4">
 <h1>筋肉ユーザーMYSELF</h1>
-<%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg" %>
+<%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg",size:'100x100' %>
 <%= @user.name %>
 <%= @user.email %>
+投稿回数<%=@user.muscles.count %><span class="glyphicon glyphicon-comment"></span>
+<!-- ここ大事 -->
+<% #if current_user.id == @users %>
+<%#= link_to "CURRENT MUSCLE変更", edit_user_path(@user),class:"btn btn-warning" %>
+<%#end%>
+</div>
 
-<h1>筋肉ユーザー投稿一覧</h1>
-<% @muscles.each do |muscle| %>
-<%=link_to  muscle_path(muscle)do%>
-<%= attachment_image_tag muscle,:image,:fill, 300,300 %>
-<%end%>
-<%= muscle.title%>
-<%= muscle.body%>
-<% end %>
+
+
+<div class="col-xs-6">
+	<div class="row">
+<table>
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	<h1>筋肉ユーザー投稿一覧</h1>
+	<% @muscles.each do |muscle| %>
+		<tr>
+			<td><%=link_to  muscle_path(muscle)do%>
+				<%= attachment_image_tag muscle,:image,:fill, 300,300 ,fallback: "Post_no_jpg" ,size:'300x300'%>
+				<%= muscle.created_at.strftime('%Y/%m/%d') %>
+				<%end%>
+			</td>
+		</tr>
+		<tr>
+			<td><%= muscle.title%></td>
+		</tr>
+		<tr>
+			<td><%= muscle.body%></td>
+		</tr>
+		<tr>
+			<td><% if current_user.id == muscle.user_id %>
+			<%=link_to'編集' ,edit_muscle_path(muscle.id),class:"btn btn-primary"%>
+			<%=link_to"消す",muscle_path(muscle.id), method: :delete, data: { confirm: '本当に消しますか？' },class:"btn btn-danger" %>
+			<%end%>
+			<% end %>
+		</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+
+
 
 
 </div>
