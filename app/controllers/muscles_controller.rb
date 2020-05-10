@@ -1,4 +1,7 @@
 class MusclesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :correct_user,only:[:edit]
+
 	def index
 					# じゃなかったら＝present?
 		@muscles = if params[:genre].present?
@@ -29,6 +32,7 @@ class MusclesController < ApplicationController
 		@muscle = Muscle.new (muscle_params)
 		@muscle.user_id = current_user.id
 		if @muscle.save
+			flash[:notice] ="MUSCLE　最高"
 		  redirect_to @muscle
 		else
 		  render "new"
@@ -39,6 +43,7 @@ class MusclesController < ApplicationController
 	def update
 		@muscle = Muscle.find(params[:id])
 	  if@muscle.update(muscle_params)
+	  	flash[:notice]="MUSCLE　最高"
 		redirect_to muscle_path
 	 else
 	 	render'edit'
@@ -55,5 +60,12 @@ class MusclesController < ApplicationController
 	def  muscle_params
 		params.require(:muscle).permit(:title,:body,:image,:muscle_genre,:video)
 	end
+
+	def correct_user
+    @muscle = Muscle.find(params[:id])
+    if @muscle.user != current_user
+      redirect_to muscle_path
+    end
+  end
 end
 

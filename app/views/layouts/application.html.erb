@@ -12,7 +12,7 @@
 <body>
 <header>
   <div class="container">
-    <h2><%=image_tag "no_image.jpg", alt: "Rails icon", id: "pic1", class: "image",width:"100px" %>
+    <h2 class="text-danger"><%=image_tag "no_image.jpg", alt: "Rails icon", id: "pic1", class: "image",width:"100px" %>
   筋肉マッスル<%=image_tag "fax.jpg", alt: "Rails icon", id: "pic1", class: "image",width:"100px" %></h2>
     <ul class="nav navbar-nav navbar-right">
      <% if user_signed_in? %>
@@ -29,10 +29,10 @@
         <li><h2><%=link_to"フォロー",users_follows_path ,class:"label label-primary"%></h2></li>
         <li><h2><%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class:"label label-danger"%></h2></li>
 
-        <%else%>
-        <li><%= link_to "ホームページ" ,root_path %></li>
-        <li><%= link_to "ログイン" ,new_user_session_path %></li>
-         <li><%= link_to "サインアップ" ,new_user_registration_path %></li>
+        <% else %>
+        <li><%= link_to "ホームページ" ,root_path,class:"btn btn-warning"%></li>
+        <li><%= link_to "ログイン" ,new_user_session_path ,class:"btn btn-primary"%></li>
+         <li><%= link_to "サインアップ" ,new_user_registration_path ,class:"btn btn-success"%></li>
         <% end %>
       </ul>
     </nav>

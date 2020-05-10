@@ -4,12 +4,12 @@
 <h1>筋肉ユーザーMYSELF</h1>
 <%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg",size:'100x100' %>
 <%= @user.name %>
-<%= @user.email %>
 投稿回数<%=@user.muscles.count %><span class="glyphicon glyphicon-comment"></span>
-<!-- ここ大事 -->
-<% #if current_user.id == @users %>
-<%#= link_to "CURRENT MUSCLE変更", edit_user_path(@user),class:"btn btn-warning" %>
-<%#end%>
+<!--current_user.idと@user.idで比較する idで比較  -->
+<% if current_user.id == @user.id %>
+<%= @user.email %>
+<%= link_to "CURRENT MUSCLE変更", edit_user_path(@user),class:"btn btn-warning" %>
+<%end%>
 </div>
 
 

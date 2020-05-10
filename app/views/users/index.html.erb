@@ -1,5 +1,11 @@
+
+<td><%=link_to user_path(@user.id)do%>
+<h3 class="text-warning">自分<%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg",size:'100x100' %></h3>
+<%end%>
+<h4>投稿回数<%=@user.muscles.count %><span class="glyphicon glyphicon-comment"></span></h4>
 <%= link_to"MYSELF投稿内容",user_path(@user) ,class:"btn btn-success"%>
 <%= link_to "CURRENT MUSCLE変更", edit_user_path(@user),class:"btn btn-warning" %>
+
 <h1>MUSCLEユーザー</h1>
 <table class="table">
 	<thead>

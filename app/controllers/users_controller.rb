@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :baria_user, only: [:edit, :update]
+
   def index
     #@muscle = Muscle.find(params[:id])
     @users = User.page(params[:page]).reverse_order
@@ -25,23 +28,30 @@ class UsersController < ApplicationController
   end
  end
 
- def destroy
-  @user = User.find(params[:id])
-  @user.destroy
-  redirect_to new_user_registration_path
-end
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to new_user_registration_path
+  end
 
-def follows
-  @users = current_user.followings
-end
+  def follows
+    @users = current_user.followings
+  end
 
-def follower
-  @users = current_user.followers
-end
+  def follower
+    @users = current_user.followers
+  end
 
 private
-def user_params
- params.require(:user).permit(:name,:user_image)
-end
+
+  def user_params
+    params.require(:user).permit(:name,:user_image)
+  end
+
+  def baria_user
+    unless params[:id].to_i == current_user.id
+      redirect_to user_path(current_user)
+    end
+  end
 
 end
