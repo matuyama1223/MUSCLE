@@ -19,10 +19,10 @@
     <%= form_for(@user) do |f| %>
 
       <h1><%= f.label :MUSCLE名前%></h1>
-      <h4><%= f.text_field :name %></h4>
+      <h4><%= f.text_field :name ,placeholder:"MUSCLE名前"%></h4>
 
   	  <h1><%= f.label :メールアドレス %></h1>
-      <th><%= f.email_field :email %></th>
+      <th><%= f.email_field :email ,placeholder:"メールアドレス"%></th>
 
       <h1>MUSCLE 画像</h1>
      <h4><%= f.attachment_field :user_image %></h4>

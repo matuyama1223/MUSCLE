@@ -18,9 +18,9 @@
 <h3>筋肉ユーザー編集</h3>
 <%= form_for(@muscle)do |f| %>
 <h1>タイトル</h1>
-<%= f.text_field :title %>
+<%= f.text_field :title,placeholder:"タイトル" %>
 <h1>内容</h1>
-<%= f.text_area :body %>
+<%= f.text_area :body,placeholder:"内容"%>
 <h1>画像</h1>
 <%= f.attachment_field :image %>
 <h1>ジャンル</h1>

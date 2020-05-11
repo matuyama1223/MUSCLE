@@ -22,9 +22,9 @@
  			<h1>筋肉ユーザー新規登録</h1>
  			<%= form_for(@muscle)do |f| %>
  			<h1>タイトル</h1>
- 			<h3><%= f.text_field :title %></h3>
+ 			<h3><%= f.text_field :title ,placeholder:"タイトル"%></h3>
  			<h1>内容</h1>
- 			<h3><%= f.text_area :body %></h3>
+ 			<h3><%= f.text_area :body ,placeholder:"内容"%></h3>
  			<h1>画像</h1>
  			 <h3><%= f.attachment_field :image %></h3>
  			<h1>ジャンル</h1>
