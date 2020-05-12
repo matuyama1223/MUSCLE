@@ -1,5 +1,5 @@
 <div class="video-top">
-	<%= video_tag("/assets/videos/video.mp4", autoplay: true, loop: true, muted: true, style: "width:100%;") %>
+	<%= video_tag "/assets/videos/video.mp4", autoplay: true, loop: true, muted: true, style: "width:100%;" %>
 	<div class="video-top-back">
 
 		<h1>筋肉を自慢して最高の筋肉を投稿し競い合いましょう</h1>
@@ -11,14 +11,13 @@
 			<h3><%=link_to "Log in", new_user_session_path, class: "btn btn-info col-xs-10 col-xs-offset-1" %></h3>
 		</div>
 	</div>
-	<!-- ===================== -->
-	<!-- rails公文の使い方 -->
+<!-- ===================== -->
+<!-- rails公文の使い方 -->
 <!-- hensumei = {
 	id: 1,
 	name: "name",
 	:id => 1,
 	:name => "name",
 } -->
-
 <%#= video_tag("/assets/videos/video.mp4", :autoplay => true, :loop => true, :muted => true, style: "width:100%;") %>
 <!-- ==================== -->
