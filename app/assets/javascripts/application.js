@@ -15,3 +15,25 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(function(){
+    var maxNum = 5, // 最大枚数
+    // 画像に数字入れて１~
+  // ↓ rdm ランダムで引数にしてあげて
+    rdm = Math.floor(Math.random() * (maxNum))+1;
+  // ⬆︎　rdm----------------------------------------↓ ランダムの数字を持ってくっる
+    $('#randomShow').attr('src', 'assets/kinniku'+rdm+'.png');
+    // 　　⬆︎定義してあげる　img id="randomShow" で持ってくる
+    								// assets_pathにしてあげる
+});
+// stylesheets/application.scssに＃randomShowで画像の大きさ変更してる
+// 画像はjQueryはpublic/images/の中に入れてあげる
+$(function(){
+    var maxNum = 5, // 最大枚数
+    // 画像に数字入れて１~
+  // ↓ rdm ランダムで引数にしてあげて
+    rdm = Math.floor(Math.random() * (maxNum))+1;
+  // ⬆︎　rdm----------------------------------------↓ ランダムの数字を持ってくっる
+    $('#randomSho').attr('src', 'assets/kinniku'+rdm+'.png');
+    // 　　⬆︎定義してあげる　img id="randomShow" で持ってくる
+});
