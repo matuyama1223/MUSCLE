@@ -19,7 +19,7 @@
 			<p class="text-danger">タイト</p>
 			<h2><%=link_to muscle.title,muscle_path(muscle)%></h2>
 			<%=link_to muscle_path(muscle) do %>
-			<%= attachment_image_tag muscle,:image,:fill, 700,500 ,fallback:"Post_no_jpg",fallback: "Post_no_jpg" ,size:'700x500'%>
+			<%= attachment_image_tag muscle,:image,:fill, 700,500 ,fallback:"Post_no_jpg",size:'700x500'%>
 			<%end%>
 			<%#= attachment_video_tag muscle.user(video: "100x100>") %>
 			<table>
