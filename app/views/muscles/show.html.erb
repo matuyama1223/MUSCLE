@@ -10,7 +10,7 @@
 		<h1>詳細投稿</h1>
 		<h3><%=@muscle.title%></h3>
 		<%=link_to user_path(@muscle.user.id)do %>
-		<%= attachment_image_tag @muscle,:image,:fill, 600,500, fallback: "Post_no_jpg" %>
+		<%= attachment_image_tag @muscle,:image,:fill, 600,500, fallback: "Post_no_jpg.jpg",size:'600x500' %>
 		<% end %>
 		<%=@muscle.body%>
 		<% if current_user.id == @muscle.user_id %>
