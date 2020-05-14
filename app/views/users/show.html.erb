@@ -30,6 +30,7 @@
 				<h4><%= muscle.title%></h4>
 					<p class="text-success">内容</p>
 				<h4><%= muscle.body%></h4>
+				<p class="bg-success"><%= muscle.favorites.count%>いいね</p>
 				<% if current_user.id == muscle.user_id %>
 				<h5><%=link_to'編集' ,edit_muscle_path(muscle.id),class:"btn btn-primary"%>
 				<%=link_to"消す",muscle_path(muscle.id), method: :delete, data: { confirm: '本当に消しますか？' },class:"btn btn-danger" %>
