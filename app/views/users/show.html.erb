@@ -11,52 +11,33 @@
 <%= link_to "CURRENT MUSCLE変更", edit_user_path(@user),class:"btn btn-warning" %>
 <%end%>
 </div>
-
-
-
-<div class="col-xs-6">
-	<div class="row">
-<table>
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-	<h1>筋肉ユーザー投稿一覧</h1>
-	<% @muscles.each do |muscle| %>
-		<tr>
-			<td><%=link_to  muscle_path(muscle)do%>
-				<%= attachment_image_tag muscle,:image,:fill, 300,300 ,fallback: "Post_no_jpg" ,size:'300x300'%>
-				<%= muscle.created_at.strftime('%Y/%m/%d') %>
-				<%end%>
-			</td>
-		</tr>
-		<tr>
-			<td><%= muscle.title%></td>
-		</tr>
-		<tr>
-			<td><%= muscle.body%></td>
-		</tr>
-		<tr>
-			<td><% if current_user.id == muscle.user_id %>
-			<%=link_to'編集' ,edit_muscle_path(muscle.id),class:"btn btn-primary"%>
-			<%=link_to"消す",muscle_path(muscle.id), method: :delete, data: { confirm: '本当に消しますか？' },class:"btn btn-danger" %>
-			<%end%>
-			<% end %>
-		</td>
-		</tr>
-	</tbody>
-</table>
-
-
-
-
-
-
-
 </div>
+
+
+
+<div class="col-xs-8">
+<table class="table">
+	<h1>筋肉ユーザー投稿一覧</h1>
+	<div class="row">
+		<tbody>
+			<% @muscles.each do |muscle| %>
+			<div class="col-xs-4">
+				<p class="bg-warning"><%= muscle.created_at.strftime('%Y/%m/%d')%></p>
+				<%=link_to  muscle_path(muscle)do%>
+				<%= attachment_image_tag muscle,:image,:fill, 200,200 ,fallback: "Post_no_jpg" ,size:'200x200'%>
+				<%end%>
+					<p class="text-danger">タイト</p>
+				<h4><%= muscle.title%></h4>
+					<p class="text-success">内容</p>
+				<h4><%= muscle.body%></h4>
+				<% if current_user.id == muscle.user_id %>
+				<h5><%=link_to'編集' ,edit_muscle_path(muscle.id),class:"btn btn-primary"%>
+				<%=link_to"消す",muscle_path(muscle.id), method: :delete, data: { confirm: '本当に消しますか？' },class:"btn btn-danger" %></h5>
+					</div>
+					<%end%>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>

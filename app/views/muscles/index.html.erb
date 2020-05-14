@@ -16,6 +16,7 @@
 			<h3>投稿一覧</h3>
 
 			<% @muscles.each do |muscle| %>
+			<p class="text-danger">タイト</p>
 			<h2><%=link_to muscle.title,muscle_path(muscle)%></h2>
 			<%=link_to muscle_path(muscle) do %>
 			<%= attachment_image_tag muscle,:image,:fill, 700,500 ,fallback:"Post_no_jpg"%>
@@ -26,15 +27,12 @@
 					<td><%=link_to user_path(muscle.user) do %>
 						<%= attachment_image_tag muscle.user, :user_image, :fill, 80, 80, fallback: "no_image.jpg",size:'80x80' ,class: "img-circle pull-left profile-thumb" %>
 						<% end %>
-
+								<p class="text-success">内容</p>
 						<td><h4><%=link_to muscle.body,muscle_path(muscle)%></h4></td>
 					</td>
 				</tr>
 				<tr>
 					<td><%= muscle.user.name %><td>
-					</tr>
-					<tr>
-
 					</tr>
 					<tr>
 						<td><%= muscle.muscle_genre%></td>
@@ -69,7 +67,9 @@
 
 			</div>
 		</div>
+		<%= paginate @muscles, class: "pagenate" %>
 	</div>
+
 </div>
 
 

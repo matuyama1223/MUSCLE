@@ -5,10 +5,10 @@ class MusclesController < ApplicationController
 	def index
 					# じゃなかったら＝present?
 		@muscles = if params[:genre].present?
-			         Muscle.where(muscle_genre: params[:genre])
+			         Muscle.where(muscle_genre: params[:genre]).page(params[:page]).reverse_order
 			         # 違ったらした
 			       else
-			      	 Muscle.all
+			      	 Muscle.page(params[:page]).reverse_order
 			       end
 		@user =  current_user
 		@users = User.all

@@ -17,11 +17,11 @@
         <ul class="nav navbar-nav navbar-right">
          <% if user_signed_in? %>
          <!-- js/skippr.min.js記載してる -->
-         <!-- <img id="randomSho"> -->
+         <img id="randomSho">
          <!-- ⬆︎画像 -->
          <li><h3 class="text-warning">ようこそ<%= current_user.name %>さん</h3><li>
           <!-- js/skippr.min.js記載してる -->
-          <!-- <img id="randomShow"> -->
+          <img id="randomShow">
           <!-- ⬆︎画像 -->
           <li><h2><%=link_to"投稿一覧", muscles_path ,class:"label label-success"%></h2></li>
           <li><h2><%= link_to "筋肉USER一覧" ,users_path ,class:"label label-success"%></h2></li>

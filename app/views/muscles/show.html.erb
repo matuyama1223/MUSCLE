@@ -1,6 +1,12 @@
 
 <div class="container">
 	<div class="row">
+	<% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
 		<h1>詳細投稿</h1>
 		<h3><%=@muscle.title%></h3>
 		<%=link_to user_path(@muscle.user.id)do %>
@@ -24,7 +30,7 @@
 		<%= form_for [@muscle, @muscle_comments] do |f| %>
 		<%= attachment_image_tag @muscle.user, :user_image, :fill, 80, 80, fallback: "no_image.jpg",size:'80x80' ,class: "img-circle pull-left profile-thumb" %>
 		<h3><%=@muscle.user.name%></h3>
-		<%=@muscle.created_at.strftime('%Y/%m/%d') %>
+		<p class="bg-warning"><%=@muscle.created_at.strftime('%Y/%m/%d') %></p>
 		<%= f.text_field :comment, rows:'5' , class: "form-control",placeholder: "コメントをここに"%>
 		<h3><%=f.submit "気持ちいいコメント 保存",class: "btn-warning btn-base-1 pull-right"%></h3>
 		<% end %>
