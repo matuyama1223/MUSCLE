@@ -12,15 +12,15 @@
     <% end %>
   <% end %>
 
-<h3>筋肉ユーザー編集</h3>
+<h1>筋肉ユーザー編集</h1>
 <%= form_for(@muscle)do |f| %>
-<h1>タイトル</h1>
+<h2>タイトル</h2>
 <%= f.text_field :title,placeholder:"タイトル" %>
-<h1>内容</h1>
+<h2>内容</h2>
 <%= f.text_area :body,placeholder:"内容"%>
-<h1>画像</h1>
+<h2>画像</h2>
 <%= f.attachment_field :image %>
-<h1>ジャンル</h1>
+<h2>ジャンル</h2>
 <%= f.select :muscle_genre,(Muscle::GENRES), include_blank: "選択して下さい"%>
 <%= f.submit '投稿保存' ,class:"label-warning"%>
 <% end %>

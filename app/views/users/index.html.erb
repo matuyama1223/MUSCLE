@@ -4,7 +4,7 @@
 <%end%>
 <h4>投稿回数<%=@user.muscles.count %><span class="glyphicon glyphicon-comment"></span></h4>
 <%= link_to"MYSELF投稿内容",user_path(@user) ,class:"btn btn-success"%>
-<%= link_to "CURRENT MUSCLE変更", edit_user_path(@user),class:"btn btn-warning" %>
+<%= link_to "プロフィール編集", edit_user_path(@user),class:"btn btn-warning" %>
 
 <h1>MUSCLEユーザー</h1>
 <table class="table">
