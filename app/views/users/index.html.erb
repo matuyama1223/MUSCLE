@@ -1,44 +1,44 @@
 
 <td><%=link_to user_path(@user.id)do%>
-<h3 class="text-warning">自分<%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg",size:'100x100' %></h3>
-<%end%>
-<h4>投稿回数<%=@user.muscles.count %><span class="glyphicon glyphicon-comment"></span></h4>
-<%= link_to"MYSELF投稿内容",user_path(@user) ,class:"btn btn-success"%>
-<%= link_to "プロフィール編集", edit_user_path(@user),class:"btn btn-warning" %>
+	<h3 class="text-warning">自分<%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg",size:'100x100' %></h3>
+	<%end%>
+	<h4>投稿回数<%=@user.muscles.count %><span class="glyphicon glyphicon-comment"></span></h4>
+	<%= link_to"MYSELF投稿内容",user_path(@user) ,class:"btn btn-success"%>
+	<%= link_to "プロフィール編集", edit_user_path(@user),class:"btn btn-warning" %>
 
-<h1>MUSCLEユーザー</h1>
-<table class="table">
-	<thead>
-		<tr>
-			<th>画像</th>
-			<th>フォロー<span class="glyphicon glyphicon-user"></span></th>
-			<th>フォロワー<span class="glyphicon glyphicon-user"></span></th>
-			<th>  </th>
-			<th>名前</th>
-			<th></th>
-			<th>投稿数<span class="glyphicon glyphicon-comment"></span></th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @users.each do |user|%>
-		<tr>
-			<td><%=link_to user_path(user.id)do%>
-			<%= attachment_image_tag user, :user_image,:fill, 200,200, fallback: "no_image.jpg", size:'200x200' %>
-				<%end%>
+	<h1>MUSCLEユーザー</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>画像</th>
+				<th>フォロー<span class="glyphicon glyphicon-user"></span></th>
+				<th>フォロワー<span class="glyphicon glyphicon-user"></span></th>
+				<th>  </th>
+				<th>名前</th>
+				<th></th>
+				<th>投稿数<span class="glyphicon glyphicon-comment"></span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @users.each do |user|%>
+			<tr>
+				<td><%=link_to user_path(user.id)do%>
+					<%= attachment_image_tag user, :user_image,:fill, 200,200, fallback: "no_image.jpg", size:'200x200' %>
+					<%end%>
 				</td>
-			<td><p>フォロー<%=link_to user.relationships.count,follows_list_path(user) %></p></td>
-			<td><p>フォロワー<%=link_to user.reverse_of_relationships.count, followers_list_path(user)%></p></td>
-			<td><%=link_to "詳細",user_path(user.id)%></td>
-			<td><%= user.name%></td>
-			<td><%= render 'relationships/follow_button',user: user %></td>
-			<td><%=link_to user_path(user.id)do%>
-			投稿回数<%=user.muscles.count %><span class="glyphicon glyphicon-comment"></span>
-			<%end%></td>
-		</tr>
+				<td><p>フォロー<%=link_to user.relationships.count,follows_list_path(user) %></p></td>
+				<td><p>フォロワー<%=link_to user.reverse_of_relationships.count, followers_list_path(user)%></p></td>
+				<td><%=link_to "詳細",user_path(user.id)%></td>
+				<td><%= user.name%></td>
+				<td><%= render 'relationships/follow_button',user: user %></td>
+				<td><%=link_to user_path(user.id)do%>
+					投稿回数<%=user.muscles.count %><span class="glyphicon glyphicon-comment"></span>
+					<%end%></td>
+				</tr>
 
-		<%end%>
+				<%end%>
 
-	</tbody>
-</table>
-<%= paginate @users, class: "pagenate" %>
+			</tbody>
+		</table>
+		<%= paginate @users, class: "pagenate" %>
 

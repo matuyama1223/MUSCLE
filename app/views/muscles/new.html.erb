@@ -1,33 +1,31 @@
- <div class="container">
- 	<div class="row">
- 		<div class="col-md-4 col-md-offset-4">
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<% if @muscle.errors.any? %>
+			<div id="error_explanation" class="alert alert-danger">
+				<ul>
+					<p><%= @muscle.errors.full_messages.count%> error</p>
+					<% @muscle.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
 
+			<h1>筋肉投稿新規登録</h1>
+			<%= form_for(@muscle)do |f| %>
+			<h1>タイトル</h1>
+			<h3><%= f.text_field :title ,placeholder:"タイトル"%></h3>
+			<h1>内容</h1>
+			<h3><%= f.text_area :body ,placeholder:"内容"%></h3>
+			<h1>画像</h1>
+			<h3><%= f.attachment_field :image %></h3>
+			<h1>ジャンル</h1>
+			<!-- muscleモデルからの(GENRES)定義(Enum) -->
+			<h3><%= f.select :muscle_genre, (Muscle::GENRES), include_blank: "選択して下さい"%></h3>
 
-<% if @muscle.errors.any? %>
-  <div id="error_explanation" class="alert alert-danger">
-    <ul>
-    	<p><%= @muscle.errors.full_messages.count%> error</p>
-      <% @muscle.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
- 			<h1>筋肉投稿新規登録</h1>
- 			<%= form_for(@muscle)do |f| %>
- 			<h1>タイトル</h1>
- 			<h3><%= f.text_field :title ,placeholder:"タイトル"%></h3>
- 			<h1>内容</h1>
- 			<h3><%= f.text_area :body ,placeholder:"内容"%></h3>
- 			<h1>画像</h1>
- 			 <h3><%= f.attachment_field :image %></h3>
- 			<h1>ジャンル</h1>
- 			<!-- muscleモデルからの(GENRES)定義(Enum) -->
- 			<h3><%= f.select :muscle_genre, (Muscle::GENRES), include_blank: "選択して下さい"%></h3>
-
- 			<%= f.submit '投稿保存',class:"label-warning" %>
- 			<% end %>
- 		</div>
- 	</div>
- </div>
+			<%= f.submit '投稿保存',class:"label-warning" %>
+			<% end %>
+		</div>
+	</div>
+</div>

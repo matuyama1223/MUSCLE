@@ -27,7 +27,7 @@
 					<td><%=link_to user_path(muscle.user) do %>
 						<%= attachment_image_tag muscle.user, :user_image, :fill, 80, 80, fallback: "no_image.jpg",size:'80x80' ,class: "img-circle pull-left profile-thumb" %>
 						<% end %>
-								<p class="text-success">内容</p>
+						<p class="text-success">内容</p>
 						<td><h4><%=link_to muscle.body,muscle_path(muscle)%></h4></td>
 					</td>
 				</tr>
@@ -69,7 +69,6 @@
 		</div>
 		<%= paginate @muscles, class: "pagenate" %>
 	</div>
-
 </div>
 
 

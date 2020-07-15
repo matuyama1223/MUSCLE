@@ -1,8 +1,6 @@
 
 <div class="container">
 	<div class="row">
-
-
 		<h1>詳細投稿</h1>
 		<h3><%=@muscle.title%></h3>
 		<%=link_to user_path(@muscle.user.id)do %>
@@ -13,15 +11,15 @@
 		<%=link_to"消す",muscle_path(@muscle.id), method: :delete, data: { confirm: '本当に消しますか？' },class:"btn btn-danger" %>
 		<%=link_to'編集' ,edit_muscle_path(@muscle.id),class:"btn btn-primary"%>
 		<% end %>
-				<% if @muscle.errors.any? %>
-		  <div id="error_explanation" class="alert alert-danger">
-		    <ul>
-		    	<p>%= @muscle.errors.full_messages.count%> error</p>
-		      <% @muscle.errors.full_messages.each do |message| %>
-		        <li><%= message %></li>
-		      <% end %>
-		    </ul>
-		  </div>
+		<% if @muscle.errors.any? %>
+		<div id="error_explanation" class="alert alert-danger">
+			<ul>
+				<p>%= @muscle.errors.full_messages.count%> error</p>
+				<% @muscle.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
 		<% end %>
 		<%= form_for [@muscle, @muscle_comments] do |f| %>
 		<%= attachment_image_tag @muscle.user, :user_image, :fill, 80, 80, fallback: "no_image.jpg",size:'80x80' ,class: "img-circle pull-left profile-thumb" %>
