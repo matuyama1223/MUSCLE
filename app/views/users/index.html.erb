@@ -1,3 +1,8 @@
+<%= form_with url:users_path,method: :get,data: {remote: false} do %>
+
+<%= text_field_tag :search %>
+<%= submit_tag "ユーザー検索", :name => nil %>
+<%end%>
 
 <td><%=link_to user_path(@user.id)do%>
 	<h3 class="text-warning">自分<%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg",size:'100x100' %></h3>
@@ -40,5 +45,5 @@
 
 			</tbody>
 		</table>
-		<%= paginate @users, class: "pagenate" %>
+		<%#= paginate @users, class: "pagenate" %>
 

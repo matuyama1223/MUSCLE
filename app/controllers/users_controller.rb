@@ -6,6 +6,15 @@ class UsersController < ApplicationController
     #@muscle = Muscle.find(params[:id])
     @users = User.page(params[:page]).reverse_order
     @user = current_user
+        if params[:search].present?
+      @users = User.where(name: params[:search])
+
+      if params[:name].present?
+      @users = @users.get_by_name params[:name]
+      end
+      else
+
+end
   end
 
   def show
