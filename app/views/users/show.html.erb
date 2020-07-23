@@ -1,47 +1,45 @@
 <div class="container">
-  <div class="row">
-  <div class="col-md-4 col-md-offset-4">
-<h1>筋肉ユーザーMYSELF</h1>
-<%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg",size:'100x100' %>
-<%= @user.name %>
-投稿回数<%=@user.muscles.count %><span class="glyphicon glyphicon-comment"></span>
-<!--current_user.idと@user.idで比較する idで比較  -->
-<% if current_user.id == @user.id %>
-<%= @user.email %>
-<%= link_to "CURRENT MUSCLE変更", edit_user_path(@user),class:"btn btn-warning" %>
-<%end%>
-</div>
-</div>
-
-
-
-<div class="col-xs-8">
-<table class="table">
-	<h1>筋肉ユーザー投稿一覧</h1>
 	<div class="row">
-		<tbody>
-			<% @muscles.each do |muscle| %>
-			<div class="col-xs-4">
-				<p class="bg-warning"><%= muscle.created_at.strftime('%Y/%m/%d')%></p>
-				<%=link_to  muscle_path(muscle)do%>
-				<%= attachment_image_tag muscle,:image,:fill, 200,200 ,fallback: "Post_no_jpg.jpg" ,size:'200x200'%>
-				<%end%>
-					<p class="text-danger">タイト</p>
-				<h4><%= muscle.title%></h4>
-					<p class="text-success">内容</p>
-				<h4><%= muscle.body%></h4>
-				<p class="bg-success"><%= muscle.favorites.count%>いいね</p>
-				<p class="bg-info"><span class="glyphicon glyphicon-edit" ></span>
-				コメント数<%= muscle.muscle_comments.count %></p>
-				<% if current_user.id == muscle.user_id %>
-				<h5><%=link_to'編集' ,edit_muscle_path(muscle.id),class:"btn btn-primary"%>
-				<%=link_to"消す",muscle_path(muscle.id), method: :delete, data: { confirm: '本当に消しますか？' },class:"btn btn-danger" %>
-					<%end%>
-				</h5>
-					</div>
-					<% end %>
-				</tbody>
-			</table>
+		<div class="col-md-4 col-md-offset-4">
+			<h1>筋肉ユーザーMYSELF</h1>
+			<%= attachment_image_tag @user, :user_image,:fill, 100,100, fallback: "no_image.jpg",size:'100x100' %>
+			<%= @user.name %>
+			投稿回数<%=@user.muscles.count %><span class="glyphicon glyphicon-comment"></span>
+			<!--current_user.idと@user.idで比較する idで比較  -->
+			<% if current_user.id == @user.id %>
+			<%= @user.email %>
+			<%= link_to "CURRENT MUSCLE変更", edit_user_path(@user),class:"btn btn-warning" %>
+			<%end%>
+
 		</div>
 	</div>
-</div>
+<div class="col-xs-8">
+	<table class="table">
+			<h1>筋肉ユーザー投稿一覧</h1>
+			<div class="row">
+				<tbody>
+					<% @muscles.each do |muscle| %>
+					<div class="col-xs-4">
+						<p class="bg-warning"><%= muscle.created_at.strftime('%Y/%m/%d')%></p>
+						<%=link_to  muscle_path(muscle)do%>
+						<%= attachment_image_tag muscle,:image,:fill, 200,200 ,fallback: "Post_no_jpg.jpg" ,size:'200x200'%>
+						<%end%>
+						<p class="text-danger">タイト</p>
+						<h4><%= muscle.title%></h4>
+						<p class="text-success">内容</p>
+						<h4><%= muscle.body%></h4>
+						<p class="bg-success"><%= muscle.favorites.count%>いいね</p>
+						<p class="bg-info"><span class="glyphicon glyphicon-edit" ></span>
+							コメント数<%= muscle.muscle_comments.count %></p>
+							<% if current_user.id == muscle.user_id %>
+							<h5><%=link_to'編集' ,edit_muscle_path(muscle.id),class:"btn btn-primary"%>
+								<%=link_to"消す",muscle_path(muscle.id), method: :delete, data: { confirm: '本当に消しますか？' },class:"btn btn-danger" %>
+								<%end%>
+							</h5>
+						</div>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>

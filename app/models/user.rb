@@ -51,5 +51,4 @@ def self.search(search)
       @user = current_user
     end
 end
-
 end
