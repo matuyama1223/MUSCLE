@@ -12,6 +12,9 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :muscle_comments, dependent: :destroy
 
+
+
+
 # ====================自分がフォローしているユーザーとの関連 ===================================
   #フォローする側のUserから見て、フォローされる側のUserを(中間テーブルを介して)集める。なので親はfollowing_id(フォローする側)
    has_many :relationships, foreign_key: 'user_id'

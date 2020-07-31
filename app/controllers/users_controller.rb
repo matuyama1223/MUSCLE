@@ -13,7 +13,6 @@ class UsersController < ApplicationController
       @users = @users.get_by_name params[:name]
       end
       else
-
 end
   end
 
