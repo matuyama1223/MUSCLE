@@ -15,7 +15,6 @@ class UsersController < ApplicationController
       else
 end
   end
-
   def show
     @user =User.find(params[:id])
     #         検索エンジンカラム名↓　検索ワード↓　　

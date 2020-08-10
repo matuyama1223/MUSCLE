@@ -39,7 +39,6 @@ class MusclesController < ApplicationController
 		end
 	end
 
-
 	def update
 		@muscle = Muscle.find(params[:id])
 	  if@muscle.update(muscle_params)
