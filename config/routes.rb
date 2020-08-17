@@ -8,8 +8,6 @@ Rails.application.routes.draw do
 # -------------------------------------------------------⬆︎定義
 	resources :users ,only: [:index,:show,:edit,:update,:destroy]
 
-
-
 	resources :muscles do
 		resources :muscle_comments,only:[:create ,:destroy]
 		resources :favorites,only:[:create,:destroy]
